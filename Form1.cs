@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using MySqlX.XDevAPI.Relational;
 
 namespace Cours_Work1
 {
@@ -70,7 +71,7 @@ namespace Cours_Work1
                 record.GetString(8),
                 record.GetString(9),
                 record.GetString(10),
-                record.GetDateTime(11).ToString("dd.MM.yyyy"), // Преобразование DATE в строку "yyyy-MM-dd"
+                record.GetDateTime(11).ToString("yyyy.MM.dd"), 
                 record.GetString(12),
                 record.GetString(13),
                 record.GetString(14),
@@ -142,6 +143,7 @@ namespace Cours_Work1
             frmcreate.Show();
         }
 
+
         private void Search(DataGridView dgw)
         {
             dgw.Rows.Clear();
@@ -204,8 +206,10 @@ namespace Cours_Work1
 
                     var command = new SqlCommand(deleteQuary, dataBase.Get_Connection());
                     command.ExecuteNonQuery();
+
+                    SqlCommand CommandIncrement = new SqlCommand("update Criminals set id = id - 1 where id > " + id + "", dataBase.Get_Connection());
                 }
-               
+
             }
             dataBase.Close_Connection();
         }
@@ -227,7 +231,10 @@ namespace Cours_Work1
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            
+            DataGridViewRow row = dataGridView1.Rows[selectedRow];
+            FormEdit frmedit = new FormEdit(selectedRow, row);
+
+            frmedit.Show();
         }
     }
 }

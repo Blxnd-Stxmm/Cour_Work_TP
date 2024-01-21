@@ -36,10 +36,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Interpol_Form));
             this.Search_Panel = new System.Windows.Forms.Panel();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.Button_refresh = new System.Windows.Forms.Button();
             this.textBox_search = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Clear_Button = new System.Windows.Forms.Button();
             this.Panel_label = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Display_panel = new System.Windows.Forms.Panel();
+            this.pictureBoxInterpol = new System.Windows.Forms.PictureBox();
             this.labelDisplayWeight = new System.Windows.Forms.Label();
             this.labelDisplayHeight = new System.Windows.Forms.Label();
             this.labelDisplayEye = new System.Windows.Forms.Label();
@@ -69,15 +73,11 @@
             this.Description_label = new System.Windows.Forms.Label();
             this.CreateNew_Button = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.pictureBoxInterpol = new System.Windows.Forms.PictureBox();
-            this.Button_refresh = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Clear_Button = new System.Windows.Forms.Button();
             this.Search_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Display_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInterpol)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Search_Panel
@@ -108,6 +108,20 @@
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // Button_refresh
+            // 
+            this.Button_refresh.BackColor = System.Drawing.Color.Tomato;
+            this.Button_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_refresh.FlatAppearance.BorderSize = 0;
+            this.Button_refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_refresh.Image = global::Cours_Work1.Properties.Resources.system_regular_18_autorenew;
+            this.Button_refresh.Location = new System.Drawing.Point(762, 16);
+            this.Button_refresh.Name = "Button_refresh";
+            this.Button_refresh.Size = new System.Drawing.Size(45, 46);
+            this.Button_refresh.TabIndex = 4;
+            this.Button_refresh.UseVisualStyleBackColor = false;
+            this.Button_refresh.Click += new System.EventHandler(this.Button_refresh_Click);
+            // 
             // textBox_search
             // 
             this.textBox_search.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -116,6 +130,30 @@
             this.textBox_search.Size = new System.Drawing.Size(176, 29);
             this.textBox_search.TabIndex = 3;
             this.textBox_search.TextChanged += new System.EventHandler(this.textBox_search_TextChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Tomato;
+            this.pictureBox1.Image = global::Cours_Work1.Properties.Resources.system_regular_42_search;
+            this.pictureBox1.Location = new System.Drawing.Point(813, 16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(45, 46);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // Clear_Button
+            // 
+            this.Clear_Button.BackColor = System.Drawing.Color.Tomato;
+            this.Clear_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Clear_Button.FlatAppearance.BorderSize = 0;
+            this.Clear_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Clear_Button.Image = global::Cours_Work1.Properties.Resources.system_regular_39_trash;
+            this.Clear_Button.Location = new System.Drawing.Point(711, 16);
+            this.Clear_Button.Name = "Clear_Button";
+            this.Clear_Button.Size = new System.Drawing.Size(45, 46);
+            this.Clear_Button.TabIndex = 1;
+            this.Clear_Button.UseVisualStyleBackColor = false;
+            this.Clear_Button.Click += new System.EventHandler(this.Clear_Button_Click);
             // 
             // Panel_label
             // 
@@ -219,6 +257,15 @@
             this.Display_panel.Size = new System.Drawing.Size(751, 523);
             this.Display_panel.TabIndex = 2;
             // 
+            // pictureBoxInterpol
+            // 
+            this.pictureBoxInterpol.Image = global::Cours_Work1.Properties.Resources.pngwing_com__1___1_;
+            this.pictureBoxInterpol.Location = new System.Drawing.Point(44, 17);
+            this.pictureBoxInterpol.Name = "pictureBoxInterpol";
+            this.pictureBoxInterpol.Size = new System.Drawing.Size(130, 130);
+            this.pictureBoxInterpol.TabIndex = 28;
+            this.pictureBoxInterpol.TabStop = false;
+            // 
             // labelDisplayWeight
             // 
             this.labelDisplayWeight.AutoSize = true;
@@ -293,7 +340,7 @@
             // 
             this.labelDisplayResidence.AutoSize = true;
             this.labelDisplayResidence.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDisplayResidence.Location = new System.Drawing.Point(40, 376);
+            this.labelDisplayResidence.Location = new System.Drawing.Point(20, 376);
             this.labelDisplayResidence.Name = "labelDisplayResidence";
             this.labelDisplayResidence.Size = new System.Drawing.Size(208, 22);
             this.labelDisplayResidence.TabIndex = 20;
@@ -313,7 +360,7 @@
             // 
             this.labelDisplayCase.AutoSize = true;
             this.labelDisplayCase.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDisplayCase.Location = new System.Drawing.Point(375, 474);
+            this.labelDisplayCase.Location = new System.Drawing.Point(387, 474);
             this.labelDisplayCase.Name = "labelDisplayCase";
             this.labelDisplayCase.Size = new System.Drawing.Size(329, 22);
             this.labelDisplayCase.TabIndex = 18;
@@ -323,7 +370,7 @@
             // 
             this.labelDisplayProfession.AutoSize = true;
             this.labelDisplayProfession.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDisplayProfession.Location = new System.Drawing.Point(34, 474);
+            this.labelDisplayProfession.Location = new System.Drawing.Point(18, 474);
             this.labelDisplayProfession.Name = "labelDisplayProfession";
             this.labelDisplayProfession.Size = new System.Drawing.Size(230, 22);
             this.labelDisplayProfession.TabIndex = 17;
@@ -518,53 +565,6 @@
             this.buttonEdit.UseVisualStyleBackColor = false;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // pictureBoxInterpol
-            // 
-            this.pictureBoxInterpol.Image = global::Cours_Work1.Properties.Resources.pngwing_com__1___1_;
-            this.pictureBoxInterpol.Location = new System.Drawing.Point(44, 17);
-            this.pictureBoxInterpol.Name = "pictureBoxInterpol";
-            this.pictureBoxInterpol.Size = new System.Drawing.Size(130, 130);
-            this.pictureBoxInterpol.TabIndex = 28;
-            this.pictureBoxInterpol.TabStop = false;
-            // 
-            // Button_refresh
-            // 
-            this.Button_refresh.BackColor = System.Drawing.Color.Tomato;
-            this.Button_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_refresh.FlatAppearance.BorderSize = 0;
-            this.Button_refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_refresh.Image = global::Cours_Work1.Properties.Resources.system_regular_18_autorenew;
-            this.Button_refresh.Location = new System.Drawing.Point(762, 16);
-            this.Button_refresh.Name = "Button_refresh";
-            this.Button_refresh.Size = new System.Drawing.Size(45, 46);
-            this.Button_refresh.TabIndex = 4;
-            this.Button_refresh.UseVisualStyleBackColor = false;
-            this.Button_refresh.Click += new System.EventHandler(this.Button_refresh_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Tomato;
-            this.pictureBox1.Image = global::Cours_Work1.Properties.Resources.system_regular_42_search;
-            this.pictureBox1.Location = new System.Drawing.Point(813, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(45, 46);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // Clear_Button
-            // 
-            this.Clear_Button.BackColor = System.Drawing.Color.Tomato;
-            this.Clear_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Clear_Button.FlatAppearance.BorderSize = 0;
-            this.Clear_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Clear_Button.Image = global::Cours_Work1.Properties.Resources.system_regular_39_trash;
-            this.Clear_Button.Location = new System.Drawing.Point(711, 16);
-            this.Clear_Button.Name = "Clear_Button";
-            this.Clear_Button.Size = new System.Drawing.Size(45, 46);
-            this.Clear_Button.TabIndex = 1;
-            this.Clear_Button.UseVisualStyleBackColor = false;
-            this.Clear_Button.Click += new System.EventHandler(this.Clear_Button_Click);
-            // 
             // Interpol_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,11 +586,11 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Search_Panel.ResumeLayout(false);
             this.Search_Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Display_panel.ResumeLayout(false);
             this.Display_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInterpol)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

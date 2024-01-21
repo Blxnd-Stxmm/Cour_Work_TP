@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Collections;
 
 namespace Cours_Work1
 {
@@ -25,43 +26,57 @@ namespace Cours_Work1
         private void Create_Gangster()
         {
             dataBase.Open_Connection();
-            var fname = TextBoxFirstName.Text;
-            var lname = Textbox_LastName.Text;
+            int Counter = 0;
+            var fname = TextBox_FirstName.Text;
+            var lname = TextBox_LastName.Text;
             var nick = TextBox_Nickname.Text;
             int weight = 0;
             int height = 0;
-            var hair = textBoxHair.Text;
-            var eye = textBoxEye.Text;
-            var specSqns = textBoxSpecSqns.Text;
-            var cityzenship = textBoxCityzenship.Text;
-            var placeBirth = textBoxPlaceBirth.Text;
+            var hair = TextBox_Hair.Text;
+            var eye = TextBox_Eye.Text;
+            var specSqns = TextBox_SpecSigns.Text;
+            var cityzenship = TextBox_Cityzenship.Text;
+            var placeBirth = TextBox_PlaceBirth.Text;
             DateTime dateBirth;
-            var lastPlace = textBoxLastPlace.Text;
-            var knowLang = textBoxKnowlanguage.Text;
-            var Profession = textBoxProfession.Text;
-            var lastCase = textBoxLastCase.Text;
+            var lastPlace = TextBox_LastPlace.Text;
+            var knowLang = TextBox_KnowLanguage.Text;
+            var profession = TextBox_Profession.Text;
+            var lastCase = TextBox_LastCase.Text;
 
-            if (DateTime.TryParse(textBoxDateBirth.Text, out dateBirth) && int.TryParse(textBoxHeight.Text, out height) && int.TryParse(textBoxWeight.Text, out weight))
+            if (DateTime.TryParse(TextBox_DateBirth.Text, out dateBirth) && int.TryParse(TextBox_Height.Text, out height) && int.TryParse(TextBox_Weight.Text, out weight))
             {
-                var addQuery = $"insert into Criminals (first_name, last_name, nickname, w_eight, height, hair, eye, special_signs, cityzenship, place_of_birth, date_of_birth, last_place_of_residence, knowledge_of_languages, criminal_profession, last_case) values ('{fname}', '{lname}', '{nick}', '{weight}', '{height}', '{hair}', '{eye}', '{specSqns}', '{cityzenship}', '{placeBirth}', '{dateBirth.ToString("dd.MM.yyyy")}', '{lastPlace}', '{knowLang}', '{Profession}', '{lastCase}' )";
-                var command = new SqlCommand(addQuery, dataBase.Get_Connection());
+                MessageBox.Show("Created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                var Query = "SELECT max_counter FROM ID_table";
+                SqlCommand command = new SqlCommand(Query, dataBase.Get_Connection());
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    Counter = Convert.ToInt32(reader["max_counter"]);
+                }
+                reader.Close();
+
+                Query = $"UPDATE ID_table SET max_counter = '{++Counter}'";
+                SqlCommand insertCommand = new SqlCommand(Query, dataBase.Get_Connection());
+                insertCommand.ExecuteNonQuery();
+
+                Query = $"insert into Criminals (id, first_name, last_name, nickname, w_eight, height, hair, eye, special_signs, cityzenship, place_of_birth, date_of_birth, last_place_of_residence, knowledge_of_languages, criminal_profession, last_case) values ('{Counter}', '{fname}', '{lname}', '{nick}', '{weight}', '{height}', '{hair}', '{eye}', '{specSqns}', '{cityzenship}', '{placeBirth}', '{dateBirth.ToString("yyyy.MM.dd")}', '{lastPlace}', '{knowLang}', '{profession}', '{lastCase}' )";
+                command = new SqlCommand(Query, dataBase.Get_Connection());
                 command.ExecuteNonQuery();
 
-                MessageBox.Show("Created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataBase.Close_Connection();
                 Close();
             }
             else
             {
-                MessageBox.Show("Error, Check the correctness of the entered values. Weight and height must be non-negative numbers, and the date format is \"dd.MM.yyyy\"", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error, Check the correctness of the entered values. Date format is \"yyyy.MM.dd\"", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            dataBase.Close_Connection();
-
         }
 
         private void Button_Create_Gangster_Click(object sender, EventArgs e)
         {
-            if ((textBoxCityzenship.Text != "") && (textBoxDateBirth.Text != "") && (textBoxEye.Text != "") && (textBoxHair.Text != "") && (textBoxHeight.Text != "") && (textBoxHeight.Text != "") && (textBoxLastCase.Text != "") && (textBoxLastCase.Text != "") && (textBoxPlaceBirth.Text != "") && (textBoxProfession.Text != "") && (textBoxSpecSqns.Text != "") && (textBoxHeight.Text != "") && (TextBoxFirstName.Text != "") && (textBoxHeight.Text != "") && (TextBox_Nickname.Text != ""))
+            if ((TextBox_Cityzenship.Text != "") && (TextBox_DateBirth.Text != "") && (TextBox_Eye.Text != "") && (TextBox_Hair.Text != "") && (TextBox_Height.Text != "") && (TextBox_Height.Text != "") && (TextBox_LastCase.Text != "") && (TextBox_LastCase.Text != "") && (TextBox_PlaceBirth.Text != "") && (TextBox_Profession.Text != "") && (TextBox_SpecSigns.Text != "") && (TextBox_Height.Text != "") && (TextBox_FirstName.Text != "") && (TextBox_Height.Text != "") && (TextBox_Nickname.Text != ""))
             {
                 Create_Gangster();
             }

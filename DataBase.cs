@@ -10,7 +10,7 @@ namespace Cours_Work1
 {
     internal class DataBase
     {
-        SqlConnection sqlConnection = new SqlConnection(@"Data Source = (LocalDb)\Cours; Initial Catalog = Data_Base_Criminals; Integrated Security = True");
+        SqlConnection sqlConnection = new SqlConnection(@"Data Source = (LocalDb)\Cours; Initial Catalog = Data_Base_Criminals_1; Integrated Security = True");
 
         public void Open_Connection()
         {
